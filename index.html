@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box{
+            background-color: red;
+            position: absolute;
+            height: 5rem;
+            width: 5rem;
+            border-radius: 50%;
+            left: 0px;
+            top: 0px;
+            transition: 1.5s;
+        }
+        .text{
+            font-weight: bold;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+    </style>
+</head>
+<body class="body">
+    <h1 class="text">Score: <span class="scores"></span></h1>
+    <h2 class="text">Чтобы собрать все шарики у тебя есть 9 секунд</h2>
+
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+
+
+<script type="text/javascript">
+    let box = document.querySelectorAll(".box")
+    let score = document.querySelector(".scores")
+    
+
+    box[0].style.top = "4rem"
+    box[0].style.left = "16rem"
+
+    box[1].style.top = "17rem"
+    box[1].style.left = "13rem"
+
+    box[2].style.top = "6rem"
+    box[2].style.left = "30rem"
+
+    box[3].style.top = "8rem"
+    box[3].style.left = "44rem"
+
+    box[4].style.top = "7rem"
+    box[4].style.left = "10rem"
+
+    box[5].style.top = "15rem"
+    box[5].style.left = "27rem"
+
+    box[6].style.top = "25rem"
+    box[6].style.left = "50rem"
+    
+    box[7].style.top = "17rem"
+    box[7].style.left = "45rem"
+
+    box[8].style.top = "32rem"
+    box[8].style.left = "10rem"
+
+    box[9].style.top = "7rem"
+    box[9].style.left = "55rem"
+
+    box[10].style.top = "4rem"
+    box[10].style.left = "75rem"
+
+    box[11].style.top = "34rem"
+    box[11].style.left = "34rem"
+
+    box[12].style.top = "34rem"
+    box[12].style.left = "60rem"
+
+    box[13].style.top = "23rem"
+    box[13].style.left = "66rem"
+
+    box[14].style.top = "15rem"
+    box[14].style.left = "70rem"
+
+    box[15].style.top = "25rem"
+    box[15].style.left = "30rem"
+
+    score1 = 0
+    score.innerHTML = score1
+
+    let redbox = 4
+    let orangebox = 3
+    let yellowbox = 5
+    let left = 100
+    let height = 80;
+	let width = 80;
+	let height1 = 80;
+	let width1 = 80;
+
+    let endGame = function(){
+	    if(score1 < 16){
+	    	document.querySelector(".body").style.display = "none";
+	    	alert("Looser");	
+	    }
+
+	    if (score1 == 16) {
+	    	document.querySelector(".body").style.display = "none";
+	    	alert("Winner");
+	    }
+	}
+
+    let changeBoxes = function(){
+        redbox = redbox + 0.5
+        for(i=0; i<4; i++){
+            box[i].style.left = redbox * i + "rem"
+            box[i].style.border = "2px solid black"
+            box[i].style.opacity = "0.4"
+        }
+        orangebox = orangebox + 0.1
+        for(i=4;i<8;i++){
+            box[i].style.top = orangebox * i + "rem"
+            box[i].style.border = "2px solid black"
+            box[i].style.opacity = "0.4"
+            box[i].style.background = "orange"
+        }
+        left = left - 1
+        height = height - 5;
+        width = width - 5;
+        for(i=8;i<12;i++){
+            box[i].style.left = left * i + "px"
+            box[i].style.height = height  + "px";
+	        box[i].style.width = width  + "px";
+	       	box[i].style.opacity = "0.4";
+	        box[i].style.border = "1px solid black";
+	        box[i].style.background = "yellow";
+        }
+            height1 = height1 + 6.5;
+	     	width1 = width1 + 6.5;
+        for(i=12;i<16;i++){
+            box[i].style.height = height1  + "px";
+	        box[i].style.width = width1  + "px";
+	       	box[i].style.opacity = "0.4";
+	        box[i].style.border = "1px solid black";
+	        box[i].style.background = "blue";
+        }
+    }
+    for(let i=0; i<16; i=i+1){
+	    box[i].onclick = function(){
+		    box[i].style.display = "none";
+		    score1 = score1 + 1;
+		    document.querySelector(".scores").innerHTML = score1;
+	}   
+	}
+
+    
+
+    let startGame = function(){
+        setInterval(changeBoxes, 1100)
+        setTimeout(endGame, 9000)
+    }
+    setTimeout (startGame, 1500)
+
+    
+</script>
+</body>
+</html>
