@@ -20,29 +20,53 @@
             font-weight: bold;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
+        .win{
+            background-color: black;
+            width: 40%;
+            height: 33rem;
+            margin: auto;
+            margin-top: 4%;
+            background-image: url(https://img.freepik.com/free-vector/pixelated-trophy-card-with-lettering_603843-3689.jpg?semt=ais_hybrid&w=740);
+            background-size: 100% 100%;
+            display: none;
+        }
+        .lose{
+            background-color: black;
+            width: 53%;
+            height: 33rem;
+            margin: auto;
+            margin-top: 4%;
+            background-image: url(https://as2.ftcdn.net/v2/jpg/05/19/23/33/1000_F_519233339_txOKdO17Ukj2GilJhCJMWNa4Ku3YJz62.jpg);
+            background-size: 100% 100%;
+            display: none;
+        }
     </style>
 </head>
-<body class="body">
-    <h1 class="text">Score: <span class="scores"></span></h1>
-    <h2 class="text">Чтобы собрать все шарики у тебя есть 9 секунд</h2>
-
-
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+<body>
+    <div class="win"></div>
+    <div class="lose"></div>
+    <div class="body">
+        <h1 class="text">Score: <span class="scores"></span></h1>
+        <h2 class="text">Чтобы собрать все шарики у тебя есть 9 секунд</h2>
+        
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    
 
 
 
@@ -114,12 +138,12 @@
     let endGame = function(){
 	    if(score1 < 16){
 	    	document.querySelector(".body").style.display = "none";
-	    	alert("Looser");	
+	    	document.querySelector(".lose").style.display = "flex"
 	    }
 
 	    if (score1 == 16) {
 	    	document.querySelector(".body").style.display = "none";
-	    	alert("Winner");
+            document.querySelector(".win").style.display = "flex"
 	    }
 	}
 
@@ -169,10 +193,10 @@
     
 
     let startGame = function(){
-        setInterval(changeBoxes, 1100)
+        setInterval(changeBoxes, 1300)
         setTimeout(endGame, 9000)
     }
-    setTimeout (startGame, 1500)
+    setTimeout (startGame, 1000)
 
     
 </script>
